@@ -11,7 +11,8 @@ license: MIT-style
 requires:
   core/1.2.4: '*'
 
-provides: [FitImage]
+provides: FitImage
+
 ...
 */
 var FitImage = new Class(
