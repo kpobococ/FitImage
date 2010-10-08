@@ -10,15 +10,73 @@
     <body>
         <script type="text/javascript">new FitImage('./bg-mootools.jpg',{'class':'background'});</script>
         <div class="global-wrapper">
-            <h1>FitImage</h1>
-            <p>
-                FitImage allows you to have a background image stretched
-                proportionally to full screen width and height. It also remains
-                fixed while the user scrolls the page. Like on <a href="http://thesixtyone.com/">thesixtyone</a>
-            </p>
-            <p>
-                <a href="http://github.com/kpobococ/FitImage">View FitImage github repository</a>
-            </p>
+            <div class="wrapper">
+                <h1>FitImage</h1>
+                <p>
+                    FitImage allows you to have a background image stretched
+                    proportionally to full screen width and height. It also remains
+                    fixed while the user scrolls the page. Like on <a href="http://thesixtyone.com/">thesixtyone</a>
+                </p>
+                <h2>How to use</h2>
+                <p>
+                    Using FitImage is as simple as it gets:
+                </p>
+                <code class="box">
+                    new FitImage('/background.jpg');
+                </code>
+                <p>
+                    Also note, that this plugin does not include any style
+                    properties except those that are dynamically generated, so
+                    you will have to add some styles to your stylesheets:
+                </p>
+                <code class="box">
+                    img.resize-background {<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;position: fixed;<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;z-index: 1;<br />
+                    }
+                </code>
+                <h2>Configuration</h2>
+                <p>
+                    The following configuration options are available:
+                </p>
+                <ul>
+                    <li>
+                        <code>class</code>: image element class name.
+                    </li>
+                    <li>
+                        <code>center</code>: should the image be centered or not.
+                        Defaults to <code>true</code>.
+                    </li>
+                    <li>
+                        <code>minWidth</code>: minimum image width. If the
+                        screen width is less than the minimum width, image size
+                        will not be reduced. Defaults to <code>1024</code>.
+                    </li>
+                    <li>
+                        <code>minHeight</code>: minimum image height. Behaves
+                        identical to minWidth. Defaults to <code>768</code>.
+                    </li>
+                    <li>
+                        <code>primary</code>: defines which dimension should
+                        perfectly fit the screen. Either <code>width</code>,
+                        <code>height</code> or <code>auto</code>. The auto
+                        setting makes sure the image completely covers the
+                        screen. Defaults to <code>auto</code>.
+                    </li>
+                    <li>
+                        <code>injectElement</code>: element to be passed to the
+                        inject method. Defaults to <code>document.body</code>.
+                    </li>
+                    <li>
+                        <code>injectPosition</code>: position to be passed to
+                        the inject method. Defaults to <code>top</code>.
+                    </li>
+                </ul>
+                <h2>Links</h2>
+                <ul>
+                    <li><a href="http://github.com/kpobococ/FitImage">Github repository</a></li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
