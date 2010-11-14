@@ -11,8 +11,8 @@ provides: [FitImage]
 */
 
 
-var FitImage = new Class(
-{
+var FitImage = new Class({
+
     Implements: [Events, Options],
 
     options: {
@@ -25,52 +25,49 @@ var FitImage = new Class(
         'injectPosition': 'top'
     },
 
-    initialize: function(image, options)
-    {
+    initialize: function(image, options){
         options = options || {};
-        options.primary = options.primary && ['width','height','auto'].contains(options.primary)
-                        ? options.primary
-                        : 'auto';
+        options.primary = options.primary && ['width', 'height', 'auto'].contains(options.primary)
+			? options.primary
+			: 'auto';
         this.setOptions(options);
         this.image = new Element('img', {
             'src': image,
             'class': this.options['class']
         }).addEvent('load', this.inject.bind(this));
         // In case browser does not support load event for images
-        document.id(window).addEvent('load', this.inject.bind(this));
-        document.id(window).addEvent('domready', this.resize.bind(this));
-        document.id(window).addEvent('resize', this.resize.bind(this));
+        window.addEvent('load', this.inject.bind(this));
+        window.addEvent('domready', this.resize.bind(this));
+        window.addEvent('resize', this.resize.bind(this));
     },
 
-    inject: function()
-    {
+    inject: function(){
         if (this.injected) return this;
-        if (!this.options.injectElement) this.options.injectElement = document.id(document).body;
-        this.image.inject(document.id(this.options.injectElement), this.options.injectPosition);
+        if (!this.options.injectElement) this.options.injectElement = document.body;
+        this.image.inject(this.options.injectElement, this.options.injectPosition);
         this.injected = true;
         // *** If image fails to resize, return launching resize on inject call even after inject becomes true
         this.resize();
         return this;
     },
 
-    resize: function()
-    {
-        var size = document.id(window).getSize(),
+    resize: function(){
+        var size = window.getSize(),
             rate = size.x / size.y,
             styles = {};
 
-        if (!this.size || this.size.x == 0) {
+        if (!this.size || this.size.x == 0){
             // *** Detect image size
-            this.size = document.id(this).getSize();
+            this.size = this.image.getSize();
             if (this.size.x == 0) return this; // Not loaded yet
             this.rate = this.size.x / this.size.y;
         }
 
         // *** Set first dimension size
-        if (this.options.primary == 'width' || (this.options.primary == 'auto' && this.rate < rate)) {
+        if (this.options.primary == 'width' || (this.options.primary == 'auto' && this.rate < rate)){
             styles.width  = size.x;
             styles.height = null;
-        } else if (this.options.primary == 'height' || (this.options.primary == 'auto' && this.rate > rate)) {
+        } else if (this.options.primary == 'height' || (this.options.primary == 'auto' && this.rate > rate)){
             styles.width  = null;
             styles.height = size.y;
         } else {
@@ -88,8 +85,7 @@ var FitImage = new Class(
         if (styles.height === null) styles.height = Math.round(styles.width  * this.size.y / this.size.x);
 
         // *** Position in the center of the screen
-        if (this.options.center)
-        {
+        if (this.options.center){
             // *** Horizontal
             if (styles.width > size.x)      styles.left = 0 - Math.round((styles.width - size.x) / 2);
             else if (styles.width < size.x) styles.left = Math.round((size.x - styles.width) / 2);
@@ -105,8 +101,8 @@ var FitImage = new Class(
         return this;
     },
 
-    toElement: function()
-    {
+    toElement: function(){
         return this.image;
     }
+	
 });
