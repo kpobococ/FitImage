@@ -40,10 +40,24 @@ var FitImage = new Class({
             'class': this.options['class']
         }).addEvent('load', this.inject.bind(this));
         // In case browser does not support load event for images
-        window.addEvent('load', this.inject.bind(this));
-        window.addEvent('domready', this.resize.bind(this));
-        window.addEvent('resize', this.resize.bind(this));
+		this.attach();
     },
+	
+	attach: function(){
+        window.addEvents({
+			'load': this.inject.bind(this),
+			'domready': this.resize.bind(this),
+			'resize': this.resize.bind(this)
+		});
+	},
+	
+	detach: function(){
+        window.removeEvents({
+			'load': this.inject.bind(this),
+			'domready': this.resize.bind(this),
+			'resize': this.resize.bind(this)
+		});
+	},
 
     inject: function(){
         if (this.injected) return this;
