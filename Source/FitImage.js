@@ -1,11 +1,15 @@
 /*
 ---
+name: FitImage
 description: fix in place and fitto screen any background image
 license: MIT-style license.
 authors:
   - Anton Suprun
 requires:
-  core/1.2.4: '*'
+  - Core/Array
+  - Core/Class.Extras
+  - Core/DOMReady
+  - Core/Element.Dimensions
 provides: [FitImage]
 ...
 */

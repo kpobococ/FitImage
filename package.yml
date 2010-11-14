@@ -1,7 +1,28 @@
-name: FitImage
+name: "FitImage"
+
+web: "[mootools.net/forge/p/fitimage](http://mootools.net/forge/p/fitimage)"
+
+description: "FitImage allows you to have a background image stretched proportionally to full screen width and height. It also remains fixed while the user scrolls the page."
+
+authors: "[Anton Suprun](http://mootools.net/forge/profile/kpobococ)"
+
+license: "MIT License"
+
+copyright: "&copy; 2010, Anton Suprun"
+
+sources:
+  - "Source/FitImage.js"
+
+# Values for MooTools forge
+
 author: kpobococ
-category: Utilities
-tags: [background, screen, image]
+
+current: 0.1.0
+
 #docs: http://url.to.docs
+
 demo: http://kpobococ.github.com/FitImage/
-current: 0.1
+
+category: Utilities
+
+tags: [background, screen, image]
