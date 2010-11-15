@@ -35,27 +35,31 @@ var FitImage = new Class({
 			? options.primary
 			: 'auto';
 		this.setOptions(options);
+		// *** Permanently bind some methods
+		this.resize = this.resize.bind(this);
+		this.inject = this.inject.bind(this);
+		// *** Load the image
 		this.image = new Element('img', {
 			'src': image,
 			'class': this.options['class']
-		}).addEvent('load', this.inject.bind(this));
+		}).addEvent('load', this.inject);
 		// In case browser does not support load event for images
 		this.attach();
 	},
 	
 	attach: function(){
 		window.addEvents({
-			'load': this.inject.bind(this),
-			'domready': this.resize.bind(this),
-			'resize': this.resize.bind(this)
+			'load': this.inject,
+			'domready': this.resize,
+			'resize': this.resize
 		});
 	},
 	
 	detach: function(){
 		window.removeEvents({
-			'load': this.inject.bind(this),
-			'domready': this.resize.bind(this),
-			'resize': this.resize.bind(this)
+			'load': this.inject,
+			'domready': this.resize,
+			'resize': this.resize
 		});
 	},
 
