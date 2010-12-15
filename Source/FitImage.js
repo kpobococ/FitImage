@@ -64,10 +64,11 @@ var FitImage = new Class({
 	},
 
 	inject: function(){
-		if (this.injected) return this;
-		if (!this.options.injectElement) this.options.injectElement = document.body;
-		this.image.inject(this.options.injectElement, this.options.injectPosition);
-		this.injected = true;
+		if (!this.injected){
+			if (!this.options.injectElement) this.options.injectElement = document.body;
+			this.image.inject(this.options.injectElement, this.options.injectPosition);
+			this.injected = true;
+		}
 		// *** If image fails to resize, return launching resize on inject call even after inject becomes true
 		this.resize();
 		return this;
