@@ -44,6 +44,7 @@ The following configuration options are available:
 * `primary`: defines which dimension should perfectly fit the screen. Either `width`, `height` or `auto`. The `auto` setting makes sure the image completely covers the screen. Defaults to `auto`.
 * `injectElement`: element to be passed to the inject method. Defaults to `document.body`.
 * `injectPosition`: position to be passed to the inject method. Defaults to `top`.
+* `sizeElement`: element acting as reference for the size of the image. Defaults to `window`.
 
 Image resizing operations always keep the image proportions intact.
 
