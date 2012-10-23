@@ -5,6 +5,7 @@ description: fix in place and fitto screen any background image
 license: MIT-style license.
 authors:
   - Anton Suprun
+  - Antoine Goutenoir
 requires:
   - Core/Array
   - Core/Class.Extras
@@ -26,7 +27,8 @@ var FitImage = new Class({
 		'minHeight': 768,
 		'primary': 'auto',
 		'injectElement': null,
-		'injectPosition': 'top'
+		'injectPosition': 'top',
+		'sizeElement': window // Element used to calculate the wanted size of the image
 	},
 
 	initialize: function(image, options){
@@ -75,7 +77,7 @@ var FitImage = new Class({
 	},
 
 	resize: function(){
-		var size = window.getSize(),
+		var size = document.id(this.options.sizeElement).getSize(),
 			rate = size.x / size.y,
 			styles = {};
 
